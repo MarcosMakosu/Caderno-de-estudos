@@ -26,6 +26,7 @@ fn main() {
     /* ----------------------------- */
     variavel_global();
     shadowing();
+    metodo();
 }
 
 fn variavel_global() {
@@ -42,6 +43,8 @@ i31o fora do main");
 }
 
 fn shadowing() {
+    println!("---Shadowing-------------------------------------");
+
     let sw: i32 = 5;
     println!("Valor de sw é {}, {:p}", sw, &sw);
     let sw: i32 = sw + 1;
@@ -51,9 +54,13 @@ fn shadowing() {
 
     println!("valor do shadowing é {}", sw);
 
-    // interessante notar que o mut no foi usado, ou seja a variavel não é mutavel
-    // é uma nova variavel em si, mudando até de tipo, por exemplo de string para usize 
-
+    /*  
+        O Shadowing é o ato de declarar uma nova variável em cima de uma já existente, 
+        no entanto a variável não sobrescrita e continua a existir até o fim da aplicação,
+        diferentemente do mut, do qual só é possivel alterar o valor de uma variável,
+        o shadowing de fato cria uma nova variável podendo alterar o formato/tipo.
+            utilidade disso está em Type Casting, Preservação de Imutabilidade, Escopos Temporaios é Coleta de Lixo 
+    */
     // exemplo
     let swtm = "a";
     println!("printando swtm {}", swtm);
@@ -63,4 +70,8 @@ fn shadowing() {
     // teve uso de ponteiro mas vou ver depois, so foi para explicar que mesmo redefinindo o valor a cade momento e botou em um celula de memoria diferente
     // com isso esconde a varivel anterios sem problema de memoria
 
+}
+
+fn metodo() {
+    println!("--- Por enquanto nada --------------------------");
 }
