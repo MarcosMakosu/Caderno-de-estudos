@@ -26,6 +26,7 @@ fn main() {
     /* ----------------------------- */
     variavel_global();
     shadowing();
+    tipos_de_dados();
     metodo();
 }
 
@@ -70,6 +71,11 @@ fn shadowing() {
     // teve uso de ponteiro mas vou ver depois, so foi para explicar que mesmo redefinindo o valor a cade momento e botou em um celula de memoria diferente
     // com isso esconde a varivel anterios sem problema de memoria
 
+}
+
+fn tipos_de_dados() {
+    println!("--- Tipos de dados -----------------------------");
+    
 }
 
 fn metodo() {
