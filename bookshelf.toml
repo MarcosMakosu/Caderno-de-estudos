@@ -1,0 +1,37 @@
+# bookshelf.toml (na raiz do repositório)
+[book]
+title = "Caderno de Estudos"
+language = "pt-br"
+
+[bookshelf]
+index-title = "Meus Estudos"
+
+# Define o livro de Algoritmos
+[[bookshelf.book]]
+id = "algoritmos"
+title = "Algoritmos (Bhargava)"
+description = "Anotações e experimentos do livro do Bhargava."
+src = "bhargava/docs"  # Aponta para a pasta que CONTÉM o book.toml
+
+# Define o livro de Rust
+[[bookshelf.book]]
+id = "Ferrugem"
+title = "Ferrugem"
+description = "Estudos sobre a linguagem Rust."
+src = "Rust/docs"
+
+# Define o livro de Rust
+[[bookshelf.book]]
+id = "Grimorio"
+title = "Grimorio"
+description = "Meu grimorio principal"
+src = "Grimorio/docs"
+
+# Cria as categorias para o índice
+[[bookshelf.category]]
+title = "Estudos Ativos"
+books = ["algoritmos", "Ferrugem"]
+
+[[bookshelf.category]]
+title = "Principal"
+books = ["Grimorio"]

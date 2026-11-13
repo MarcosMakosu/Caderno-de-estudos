@@ -1,0 +1,7 @@
+# bhargava/docs/book.toml
+[book]
+title = "Algoritmos"
+authors = ["MarcosMakosu"]
+language = "pt-br"
+src = "src"
+

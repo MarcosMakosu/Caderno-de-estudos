@@ -1,0 +1,11 @@
+# bhargava/docs/book.toml
+[book]
+title = "Ferrugem"
+authors = ["MarcosMakosu"]
+language = "pt-br"
+src = "src"
+
+[build]
+extra-watch-dirs = ["../lab"]
+# A linha extra-watch-dirs é o que permite que o mdbook serve recarregue o livro automaticamente quando
+# alterar um arquivo na pasta lab
