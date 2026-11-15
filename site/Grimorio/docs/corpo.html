@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a01d13d6.js";
+            window.path_to_searchindex_js = "searchindex-6a0ac3fc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-d536c10f.js"></script>
@@ -176,11 +176,9 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <script type="application/json" id="mdbook-bookshelf-page-metadata">{"documentationIndexTarget":"../../index.html","searchIndexTarget":"bookshelf-searchindex.js"}</script>
-<h1 id="conceitos"><a class="header" href="#conceitos">Conceitos</a></h1>
-<ul>
-<li>Binding: Associação de um <strong>nome</strong> a um <strong>valor</strong>.
-sería mais corretor afirma que é a associação de um nome a um <strong>lugar</strong>,a declaração de uma <strong>ligação</strong> (que pode ser mutável ou imutável).</li>
-</ul>
+<h1 id="conceitos-de-programação"><a class="header" href="#conceitos-de-programação">Conceitos de programação</a></h1>
+<h2 id="binding"><a class="header" href="#binding">Binding:</a></h2>
+<p>Associação de um <strong>nome</strong> a um <strong>valor</strong>. sería mais corretor afirma que é a associação de um nome a um <strong>lugar</strong>,a declaração de uma <strong>ligação</strong> (que pode ser mutável ou imutável).</p>
 <p>Exemplo: Em rust através do Shadowing esse conceito fica presente, pois o <strong>valor</strong> ligado ao <strong>nome</strong> muda, não sendo uma variavel, por meio de uma nova ligação, sendo a primeira ligação inda presente.</p>
 <pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -190,7 +188,63 @@ let NOME = "a" //aqui foi feito um Binding
 let NOME = "b" //aqui foi feito um **novo** Binding
 <span class="boring">}</span></code></pre>
 <p>O Primeiro Binding entre NOME e o valor “a”, Continua existindo e não sendo de fato sobrescrito, por esse motivo o conceito de binding é mais aplicado.</p>
-<h1 id="rust"><a class="header" href="#rust">Rust</a></h1>
+<h2 id="ponteiro"><a class="header" href="#ponteiro">Ponteiro</a></h2>
+<p>Ponteiros são variaveis que guardam o endereço de memoria de outra variavel, elas funcionam apontando <strong>exatamente</strong> o endereço de local exato na memoria ram onde o <strong>dado</strong> está guardado.</p>
+<p>Exemplo:</p>
+<pre><code class="language-python">	x = 5 
+	y = x # y = 10
+	x = 10
+
+	print(x, y)
+</code></pre>
+<p>A resposta desse codigo é “15, 10” na primeira linha o X é vinculado ao valor 10, então em algum lugar da memoria ram foi declarado que ali reside o valor 10, seguindo para a segunda linha o y foi vinculado a x, nesse momento y recebe uma copia do valor de x, mas não apontando para x de fato, então quando chegamos na terceira linha a onde x tem seu valor alterado para 10, y não acompanha por ele está com uma “copia” anterior de x.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Dentro do python por motivos de aperfeiçoadmento da performe do projeto, caso nesse mesmo codigo não houvesse a terceira linha, ao ser interpretada, y estaria apontando para o endereço de memoria de x, é não recebendo uma copia do valor, funcionando como um ponteiro.</p>
+</blockquote>
+<h1 id="markdown"><a class="header" href="#markdown">Markdown</a></h1>
+<h2 id="citações"><a class="header" href="#citações">Citações:</a></h2>
+<ul>
+<li>Uso de avisos:
+dá para usar avisos dentro das citações com “[]” e a declaração</li>
+</ul>
+<pre><code>&gt; [!NOTE]
+&gt; Informação útil que o leitor deve saber, mesmo lendo por cima.
+
+&gt; [!TIP]
+&gt; Dica opcional ou atalho para fazer algo de forma mais fácil e rápida.
+
+&gt; [!IMPORTANT]
+&gt; Informação crucial que o usuário precisa saber para ter sucesso.
+
+&gt; [!WARNING]
+&gt; Conteúdo urgente que exige atenção imediata para evitar problemas.
+
+&gt; [!CAUTION]
+&gt; Aviso sobre riscos, perda de dados ou consequências negativas de uma ação.
+</code></pre>
+<p>O que gera os avisos:</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Informação útil que o leitor deve saber, mesmo lendo por cima.</p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>Dica opcional ou atalho para fazer algo de forma mais fácil e rápida.</p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Informação crucial que o usuário precisa saber para ter sucesso.</p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Conteúdo urgente que exige atenção imediata para evitar problemas.</p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-caution">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
+<p>Aviso sobre riscos, perda de dados ou consequências negativas de uma ação.</p>
+</blockquote>
+<h1 id="rust"><a class="header" href="#rust">rust</a></h1>
 <h3 id="shadowing"><a class="header" href="#shadowing">Shadowing</a></h3>
 <h1 id="git"><a class="header" href="#git">GIT</a></h1>
 <h3 id="convetional-gits"><a class="header" href="#convetional-gits">Convetional gits</a></h3>
