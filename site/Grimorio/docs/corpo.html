@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6a0ac3fc.js";
+            window.path_to_searchindex_js = "searchindex-c7cc18dd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-d536c10f.js"></script>
+        <script src="toc-537fc423.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,72 +182,63 @@
 <p>Exemplo: Em rust através do Shadowing esse conceito fica presente, pois o <strong>valor</strong> ligado ao <strong>nome</strong> muda, não sendo uma variavel, por meio de uma nova ligação, sendo a primeira ligação inda presente.</p>
 <pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>
+</span>//rust
+
 let NOME = "a" //aqui foi feito um Binding
 
 let NOME = "b" //aqui foi feito um **novo** Binding
 <span class="boring">}</span></code></pre>
-<p>O Primeiro Binding entre NOME e o valor “a”, Continua existindo e não sendo de fato sobrescrito, por esse motivo o conceito de binding é mais aplicado.</p>
+<p>O Primeiro Binding entre <strong>NOME</strong> e o valor <strong>a</strong>, Continua existindo e não sendo de fato sobrescrito, por esse motivo o conceito de binding é mais aplicado.</p>
 <h2 id="ponteiro"><a class="header" href="#ponteiro">Ponteiro</a></h2>
 <p>Ponteiros são variaveis que guardam o endereço de memoria de outra variavel, elas funcionam apontando <strong>exatamente</strong> o endereço de local exato na memoria ram onde o <strong>dado</strong> está guardado.</p>
+<p>Imagine a memória de um computador como uma rua cheia de casas, sendo cada casa um “espaço” da memória e seu ou seus inquilino/s sendo o valor armazenado nessa memória.
+O Ponteiro tem como papel informa o número residencial dessa casa, para então fazer proveito de seu valor.</p>
+<p>Em linguagens de alto nível tende a não lidar com isso, como o Python e o Lua, em geral fazendo o gerenciamento de memória por conta propria no Interpretador ou copilador, ao inferir uma váriavel com um valor e depois declarar uma váriavel que busque se referir a váriavel anterior, a váriavel posterior acaba por criar uma copia da váriavel anterior e não se referir a ela de verdade, ocorrendo de dois valores identicas(ou não) mas de mesmo intuito coexistirem no processamento ocupando a memória duas vezes.</p>
 <p>Exemplo:</p>
-<pre><code class="language-python">	x = 5 
-	y = x # y = 10
-	x = 10
+<pre><code class="language-python"># python
+
+	x = 5  # Linha 1: X começa a armazenar o valor 5
+	y = x  # Linha 2: y = 5, pois x é igual a 5
+	y = 10 # Linha 3: aqui tentamos alterar o valor 5 para 10 
 
 	print(x, y)
+	# Resultado do Print: 5, 10
 </code></pre>
-<p>A resposta desse codigo é “15, 10” na primeira linha o X é vinculado ao valor 10, então em algum lugar da memoria ram foi declarado que ali reside o valor 10, seguindo para a segunda linha o y foi vinculado a x, nesse momento y recebe uma copia do valor de x, mas não apontando para x de fato, então quando chegamos na terceira linha a onde x tem seu valor alterado para 10, y não acompanha por ele está com uma “copia” anterior de x.</p>
+<p>Na linha 1 o X é vinculado ao valor 5, então em algum lugar da memoria ram foi declarado que ali reside o valor 5, seguindo para a linha 2 o y foi vinculado a x, nesse momento y recebe uma copia do valor de x, mas não apontando para x de fato, então quando chegamos na linha 3 aonde y tem seu valor alterado para 10, x se diferencia de y pois y não está vinculado com x, possuindo apenas uma copia que teve seu valor alterado para 10.</p>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Dentro do python por motivos de aperfeiçoadmento da performe do projeto, caso nesse mesmo codigo não houvesse a terceira linha, ao ser interpretada, y estaria apontando para o endereço de memoria de x, é não recebendo uma copia do valor, funcionando como um ponteiro.</p>
+<p>Dentro do python (e Linguagens modernas de alto nível) por motivos de aperfeiçoadmento da performe do projeto, caso nesse mesmo codigo <strong>não</strong> houvesse a linha 3, ou seja alguma tentativa de alterar o valor de x por meio de outra váriavel, ao ser interpretada, e estaria apontando para o endereço de memoria de x, é não recebendo uma copia do valor, funcionando como um ponteiro.</p>
 </blockquote>
-<h1 id="markdown"><a class="header" href="#markdown">Markdown</a></h1>
-<h2 id="citações"><a class="header" href="#citações">Citações:</a></h2>
-<ul>
-<li>Uso de avisos:
-dá para usar avisos dentro das citações com “[]” e a declaração</li>
-</ul>
-<pre><code>&gt; [!NOTE]
-&gt; Informação útil que o leitor deve saber, mesmo lendo por cima.
+<p>Enquanto linguagens de alto nível buscam fazer esse gerenciamento pelo programador, linguagens de baixo nível buscam lhe dá controle <strong>absoluto</strong>, não só isso mas como a total <strong>responsabilidade</strong> de administrar a memória, a linguagem C de porgramção é o exemplo mais conhecido disso.</p>
+<p>exemplo:</p>
+<pre><code class="language-c">// C
+#include &lt;stdio.h&gt;
 
-&gt; [!TIP]
-&gt; Dica opcional ou atalho para fazer algo de forma mais fácil e rápida.
+int main() {
+	int x = 5;    // Linha 1: Armazenado o valor 5 em x.
+	int *y = &amp;x;  // Linha 2: o "*" tem a função de avisar o copilador que aquela váriavel será um pnteiro, é o &amp; busca saber o endereço de memória de x.
+	*y = 10;      // Linha 3: Aqui o "*" ja serve para indicar qual é o ponteiro.
 
-&gt; [!IMPORTANT]
-&gt; Informação crucial que o usuário precisa saber para ter sucesso.
+	printf("X = %d e y = %d", x, *y);
+	// Resultado do Print: X = 10 e Y = 10
 
-&gt; [!WARNING]
-&gt; Conteúdo urgente que exige atenção imediata para evitar problemas.
-
-&gt; [!CAUTION]
-&gt; Aviso sobre riscos, perda de dados ou consequências negativas de uma ação.
+	return 0;
+}
 </code></pre>
-<p>O que gera os avisos:</p>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Informação útil que o leitor deve saber, mesmo lendo por cima.</p>
-</blockquote>
-<blockquote class="blockquote-tag blockquote-tag-tip">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
-<p>Dica opcional ou atalho para fazer algo de forma mais fácil e rápida.</p>
-</blockquote>
-<blockquote class="blockquote-tag blockquote-tag-important">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>Informação crucial que o usuário precisa saber para ter sucesso.</p>
-</blockquote>
-<blockquote class="blockquote-tag blockquote-tag-warning">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>Conteúdo urgente que exige atenção imediata para evitar problemas.</p>
-</blockquote>
-<blockquote class="blockquote-tag blockquote-tag-caution">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
-<p>Aviso sobre riscos, perda de dados ou consequências negativas de uma ação.</p>
-</blockquote>
-<h1 id="rust"><a class="header" href="#rust">rust</a></h1>
-<h3 id="shadowing"><a class="header" href="#shadowing">Shadowing</a></h3>
-<h1 id="git"><a class="header" href="#git">GIT</a></h1>
-<h3 id="convetional-gits"><a class="header" href="#convetional-gits">Convetional gits</a></h3>
+<p>Como o observado o resultado de x e y é identico, pois de fato houve uma organização a fim de peformar a memória sem consumos desnecessarios, após a linha 1, quando x foi vinculado a 5, a linha 2 faz a vinculação de y deixando <strong>explicito</strong> como um ponteiro de x, fazendo com que y na linha 3 consiga alterar o valor de x para 10 como o demostrado.</p>
+<p>Interessante observa outras linguagens de baixo de nível como Rust, que fazem o uso de ponteiro atraves de uma dinamica intitulada <strong>Referências</strong>, conceito em conformidade com a filosofia do rust de priorizar a segurança de memória, a <strong>Referência</strong> representando pelo <strong>“&amp;”</strong> pega um valor emprestado sem assumir sua posse.</p>
+<pre class="playground"><code class="language-rust">	// Rust
+	fn main() {
+    	let mut x = 10; // Linha 1: Cria um vinculo explicitamente mutável de "x" com 10
+    	let y = &amp;mut x; // Linha 2: Cria um outro vinculo mutável apontado para "x"
+    	*y = 25;        // Linha 3: Desvincula para alterar o valor original
+    
+    	println!("Novo x: {}", x); 
+		// Resultado: execute através do RustPlaygraunds (botão de seta)
+	}
+</code></pre>
+<h3 id="o-motivo-do-uso-de-ponteiros"><a class="header" href="#o-motivo-do-uso-de-ponteiros">O motivo do uso de ponteiros</a></h3>
+<p>O uso de ponteiros está relacionado a busca de performace contra gastos desnecessarios, permitindo passar grandes dados como matrizes e estruturas complexas, não criando copias que ocupariam mais memória, e em estruturas de dados avançados, são essecias para a construção de listas encadeadas, árvores e grafos, pois cada elemento necessita saber onde está o proximo da memória.</p>
 
                     </main>
 
@@ -257,6 +248,9 @@ dá para usar avisos dentro das citações com “[]” e a declaração</li>
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
+                            <a rel="next prefetch" href="Markdown.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -268,6 +262,9 @@ dá para usar avisos dentro das citações com “[]” e a declaração</li>
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
+                    <a rel="next prefetch" href="Markdown.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
             </nav>
 
         </div>

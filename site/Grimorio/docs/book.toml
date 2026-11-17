@@ -4,7 +4,7 @@ title = "Grimorio"
 authors = ["MarcosMakosu"]
 language = "pt-br"
 src = "src"
-
+aaa
 [build]
 extra-watch-dirs = ["../lab"]
 # A linha extra-watch-dirs é o que permite que o mdbook serve recarregue o livro automaticamente quando
